@@ -88,3 +88,7 @@ The tests compare schemas and messages with `protoc` and Python Protobuf. The gR
 - Some daScript identifier collisions may require manual renaming.
 
 See the official [Protobuf encoding guide](https://protobuf.dev/programming-guides/encoding/) and [Editions feature guide](https://protobuf.dev/editions/features/).
+
+## License
+
+MIT. See [LICENSE](LICENSE).
