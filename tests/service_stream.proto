@@ -1,0 +1,9 @@
+syntax = "proto3";
+package example;
+message StreamRequest { int32 value = 1; }
+message StreamReply { int32 value = 1; }
+service StreamEcho {
+  rpc Upload(stream StreamRequest) returns (StreamReply);
+  rpc Subscribe(StreamRequest) returns (stream StreamReply);
+  rpc Chat(stream StreamRequest) returns (stream StreamReply);
+}

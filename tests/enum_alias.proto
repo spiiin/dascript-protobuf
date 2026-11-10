@@ -1,0 +1,9 @@
+syntax = "proto3";
+package example;
+enum AliasColor {
+  option allow_alias = true;
+  UNKNOWN = 0;
+  RED = 1;
+  CRIMSON = 1;
+}
+message AliasPaint { AliasColor color = 1; }

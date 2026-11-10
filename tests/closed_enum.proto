@@ -1,0 +1,23 @@
+edition = "2023";
+package example;
+option features.enum_type = CLOSED;
+
+enum State {
+  STATE_UNSPECIFIED = 0;
+  STATE_READY = 1;
+}
+enum OpenState {
+  option features.enum_type = OPEN;
+  OPEN_STATE_UNSPECIFIED = 0;
+  OPEN_STATE_READY = 1;
+}
+
+message ClosedEnums {
+  State single = 1;
+  repeated State many = 2;
+  oneof choice {
+    State selected = 3;
+  }
+  map<int32, State> states = 4;
+  OpenState open_state = 5;
+}

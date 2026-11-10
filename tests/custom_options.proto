@@ -1,0 +1,6 @@
+syntax = "proto2";
+package example;
+import "google/protobuf/descriptor.proto";
+extend google.protobuf.FileOptions { optional int32 file_code = 50001; }
+extend google.protobuf.MessageOptions { optional int32 message_code = 50002; }
+extend google.protobuf.FieldOptions { optional int32 field_code = 50003; }

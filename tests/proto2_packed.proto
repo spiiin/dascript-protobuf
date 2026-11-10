@@ -1,0 +1,6 @@
+syntax = "proto2";
+package example;
+message Proto2Packed {
+  repeated int32 packed = 1 [packed = true];
+  repeated int32 unpacked = 2;
+}

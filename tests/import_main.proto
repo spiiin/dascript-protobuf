@@ -1,0 +1,8 @@
+syntax = "proto3";
+package example;
+import "import_dep.proto";
+message Imported {
+  shared.Item child = 1;
+  shared.Kind kind = 2;
+  repeated shared.Item items = 3;
+}

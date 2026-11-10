@@ -1,0 +1,5 @@
+syntax="proto3";
+package example;
+message Request { int32 value=1; }
+message Reply { int32 value=1; }
+service Echo { rpc Call(Request) returns (Reply); }

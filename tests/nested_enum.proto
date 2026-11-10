@@ -1,0 +1,6 @@
+syntax="proto3";
+package example;
+message Outer {
+  enum Color { UNKNOWN=0; RED=1; }
+  Color color=1;
+}

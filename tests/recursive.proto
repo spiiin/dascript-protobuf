@@ -1,0 +1,3 @@
+syntax = "proto3";
+package example;
+message Node { int32 value=1; Node next=2; }

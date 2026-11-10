@@ -1,0 +1,14 @@
+syntax = "proto3";
+package example;
+message Child { int32 value = 1; }
+message Advanced {
+  sint32 delta = 1;
+  sfixed64 clock = 2;
+  uint64 mask = 3;
+  float ratio = 4;
+  double precise = 5;
+  bytes data = 6;
+  repeated string labels = 7;
+  Child child = 8;
+  repeated Child children = 9;
+}

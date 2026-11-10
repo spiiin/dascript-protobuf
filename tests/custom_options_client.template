@@ -1,0 +1,15 @@
+options gen2
+require ./custom_options_user_generated.das
+[export]
+def main {
+    let data <- pb_pack_CustomUser(CustomUser(value=3))
+    let value <- pb_unpack_CustomUser(data)
+    verify(value.value==3)
+    var file_seen=false
+    for(field in pb_scan_fields(pb_file_options())){if(field.number==50001){file_seen=true}}
+    var message_seen=false
+    for(field in pb_scan_fields(pb_message_options_CustomUser())){if(field.number==50002){message_seen=true}}
+    var field_seen=false
+    for(field in pb_scan_fields(pb_field_options_CustomUser_value())){if(field.number==50003){field_seen=true}}
+    verify(file_seen && message_seen && field_seen)
+}

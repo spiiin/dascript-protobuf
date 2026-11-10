@@ -1,0 +1,5 @@
+edition = "2023";
+package example;
+message Utf8Loose {
+  string value = 1 [features.utf8_validation = NONE];
+}

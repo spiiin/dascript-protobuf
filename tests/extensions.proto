@@ -1,0 +1,18 @@
+syntax = "proto2";
+package example;
+message Extendable {
+  optional int32 id = 1;
+  extensions 100 to 199;
+  reserved 4 to 6;
+  reserved "old_name";
+}
+extend Extendable {
+  optional string note = 100;
+  repeated int32 tags = 101 [packed = true];
+}
+enum Flags {
+  ZERO = 0;
+  ONE = 1;
+  reserved 2 to 4;
+  reserved "OLD";
+}

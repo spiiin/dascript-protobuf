@@ -1,0 +1,11 @@
+syntax = "proto2";
+package example;
+message GroupHolder {
+  optional group Detail = 1 {
+    required int32 a = 2;
+    optional string b = 3;
+  }
+  repeated group Item = 4 {
+    optional int32 value = 5;
+  }
+}

@@ -1,0 +1,6 @@
+edition = "2023";
+package example;
+message DelimitedChild { int32 value = 1; }
+message DelimitedHolder {
+  DelimitedChild child = 1 [features.message_encoding = DELIMITED];
+}

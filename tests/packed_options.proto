@@ -1,0 +1,6 @@
+syntax = "proto3";
+package example;
+message PackedOptions {
+  repeated int32 unpacked = 1 [packed = false];
+  repeated int32 packed = 2;
+}

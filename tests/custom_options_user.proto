@@ -1,0 +1,9 @@
+syntax = "proto3";
+// This comment must survive the schema-first round trip.
+package example;
+import "custom_options.proto";
+option (example.file_code) = 7;
+message CustomUser {
+  option (example.message_code) = 8;
+  int32 value = 1 [(example.field_code) = 9];
+}

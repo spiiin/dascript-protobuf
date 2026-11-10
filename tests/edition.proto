@@ -1,0 +1,6 @@
+edition = "2023";
+package example;
+message Sample {
+  int32 explicit_value=1;
+  int32 implicit_value=2 [features.field_presence=IMPLICIT];
+}

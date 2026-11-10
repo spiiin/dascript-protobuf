@@ -1,0 +1,6 @@
+syntax = "proto3";
+message Envelope {
+  message Request { int32 value = 1; }
+  message Reply { int32 value = 1; }
+}
+service Nested { rpc Call(Envelope.Request) returns (Envelope.Reply); }

@@ -1,0 +1,3 @@
+syntax = "proto3";
+package example;
+message Counts { map<string, int32> by_name=1; }

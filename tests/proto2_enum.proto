@@ -1,0 +1,4 @@
+syntax="proto2";
+package example;
+enum Color { RED=1; BLUE=2; }
+message Paint { optional Color color=1; }

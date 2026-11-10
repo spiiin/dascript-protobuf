@@ -1,0 +1,6 @@
+syntax = "proto2";
+package example;
+message Defaults {
+  optional int32 count = 1 [default = 7];
+  optional string label = 2 [default = "ready"];
+}

@@ -1,0 +1,4 @@
+syntax = "proto3";
+package shared;
+message Item { int32 code = 1; }
+enum Kind { UNKNOWN = 0; ACTIVE = 1; }

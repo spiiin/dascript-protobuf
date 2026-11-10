@@ -1,0 +1,9 @@
+options gen2
+require ./edition2026_generated.das
+[export]
+def main {
+    let bytes <- pb_pack_Future(Future(value=some(7)))
+    verify(length(bytes)==2 && bytes[0]==8u8 && bytes[1]==7u8)
+    let value <- pb_unpack_Future(bytes)
+    verify(value.value is some && (value.value as some)==7)
+}

@@ -1,0 +1,4 @@
+syntax = "proto3";
+package example;
+enum Color { UNKNOWN=0; RED=1; BLUE=2; }
+message Thing { Color color=1; repeated Color colors=2; }

@@ -1,0 +1,12 @@
+syntax = "proto2";
+package example;
+
+enum LegacyState {
+  LEGACY_STATE_UNSPECIFIED = 0;
+  LEGACY_STATE_READY = 1;
+}
+
+message LegacyEnums {
+  optional LegacyState single = 1;
+  repeated LegacyState many = 2 [packed = true];
+}

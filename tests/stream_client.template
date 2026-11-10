@@ -1,0 +1,37 @@
+options gen2
+require ./service_stream_generated.das
+[export]
+def main {
+    let subscribed <- pb_rpc_stream_StreamEcho_Subscribe([StreamRequest(value=7)]) $(method:string; payloads:array<array<uint8>>):array<array<uint8>> {
+        verify(method=="/example.StreamEcho/Subscribe" && length(payloads)==1)
+        let request <- pb_unpack_StreamRequest(payloads[0])
+        var out:array<array<uint8>>
+        var first <- pb_pack_StreamReply(StreamReply(value=request.value+1))
+        var second <- pb_pack_StreamReply(StreamReply(value=request.value+2))
+        emplace(out,first)
+        emplace(out,second)
+        return <- out
+    }
+    verify(length(subscribed)==2 && subscribed[0].value==8 && subscribed[1].value==9)
+    let uploaded <- pb_rpc_stream_StreamEcho_Upload([StreamRequest(value=2),StreamRequest(value=3)]) $(method:string; payloads:array<array<uint8>>):array<array<uint8>> {
+        verify(method=="/example.StreamEcho/Upload" && length(payloads)==2)
+        let left <- pb_unpack_StreamRequest(payloads[0])
+        let right <- pb_unpack_StreamRequest(payloads[1])
+        var out:array<array<uint8>>
+        var reply <- pb_pack_StreamReply(StreamReply(value=left.value+right.value))
+        emplace(out,reply)
+        return <- out
+    }
+    verify(length(uploaded)==1 && uploaded[0].value==5)
+    let chatted <- pb_rpc_stream_StreamEcho_Chat([StreamRequest(value=2),StreamRequest(value=3)]) $(method:string; payloads:array<array<uint8>>):array<array<uint8>> {
+        verify(method=="/example.StreamEcho/Chat" && length(payloads)==2)
+        var out:array<array<uint8>>
+        for(payload in payloads){
+            let request <- pb_unpack_StreamRequest(payload)
+            var reply <- pb_pack_StreamReply(StreamReply(value=request.value+10))
+            emplace(out,reply)
+        }
+        return <- out
+    }
+    verify(length(chatted)==2 && chatted[0].value==12 && chatted[1].value==13)
+}

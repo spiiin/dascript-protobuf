@@ -1,0 +1,4 @@
+syntax = "proto3";
+package example;
+message ChoiceChild { int32 a = 1; int32 b = 2; }
+message ChoiceHolder { oneof choice { ChoiceChild child = 1; int32 count = 2; } }

@@ -1,0 +1,4 @@
+edition = "2023";
+package example;
+option features.repeated_field_encoding = EXPANDED;
+message EditionFileExpanded { repeated int32 values = 1; }

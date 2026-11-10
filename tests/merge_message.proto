@@ -1,0 +1,4 @@
+syntax = "proto3";
+package example;
+message MergeChild { int32 a = 1; int32 b = 2; }
+message MergeHolder { MergeChild child = 1; }
